@@ -7,7 +7,7 @@ defmodule PhoenixChat.RoomChannel do
       {:ok, socket}
     end
     
-    '''
+    
     def handle_info(:after_join, socket) do
       Presence.track(socket, socket.assigns.user, %{
         online_at: :os.system_time(:milli_seconds)
@@ -15,7 +15,7 @@ defmodule PhoenixChat.RoomChannel do
       push socket, "presence_state", Presence.list(socket)
       {:noreply, socket}
     end
-    '''
+    
 
     def handle_in("message:new", message, socket) do
         broadcast! socket, "message:new", %{

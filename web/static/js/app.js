@@ -19,15 +19,13 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
-// import {Socket, Presence} from "phoenix"
-import Socket from "phoenix"
+import {Socket, Presence} from "phoenix"
 
 // Socket
 let user = document.getElementById("User").innerText
 let socket = new Socket("/socket", {params: {user: user}})
 socket.connect()
 
-/*
 // Presence
 let presences = {}
 
@@ -65,9 +63,6 @@ room.on("presence_diff", diff => {
   Presence.syncDiff(presences, diff)
   render(presences)
 })
-*/
-
-let room = socket.channel("room:lobby", {})
 
 room.join()
 
